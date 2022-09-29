@@ -16,7 +16,6 @@ FROM build AS publish
 RUN dotnet publish "Tailspin.SpaceGame.Web.csproj" -c Release -o /app/publish
 
 FROM base AS final
-ENV ASPNETCORE_ENVIRONMENT=Staging
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Tailspin.SpaceGame.Web.dll"]
